@@ -25,7 +25,6 @@ elif command -v apt >/dev/null 2>&1; then
     alias search='apt search'
 fi
 
-
 glg() {
   local query="$*"
   if [[ -z "$query" ]]; then

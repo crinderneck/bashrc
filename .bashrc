@@ -8,15 +8,23 @@ date
 alias ma='minall'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
 alias ipconfig='ip -4 addr show'
-alias install='sudo pacman -S'
-alias uninstall='sudo pacman -Rsc'
-alias update='sudo pacman -Syu'
-alias search='pacman -Ss'
 alias rerc='. ~/.bashrc'
 alias editrc='nano ~/.bashrc'
 alias la='ls -A'
+
+if command -v pacman >/dev/null 2>&1; then
+    alias install='sudo pacman -S'
+    alias uninstall='sudo pacman -Rsc'
+    alias update='sudo pacman -Syu'
+    alias search='pacman -Ss'
+elif command -v apt >/dev/null 2>&1; then
+    alias install='sudo apt install'
+    alias uninstall='sudo apt remove'
+    alias update='sudo apt update'
+    alias search='apt search'
+fi
+
 
 glg() {
   local query="$*"
